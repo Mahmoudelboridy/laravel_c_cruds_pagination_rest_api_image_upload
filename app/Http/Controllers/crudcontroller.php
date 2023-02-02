@@ -25,9 +25,10 @@ class crudcontroller extends Controller
             $image=$request->file('image');
             $extension=$image->getClientOriginalExtension();
             $image_name=time().'.'.$extension;
+            $image_name_path='/storage/pics/'.$image_name;
             $image->move('storage/pics',$image_name);
              cruds::create([
-             'image'=>$image_name,
+             'image'=>$image_name_path,
              'name'=>$request->name
              ]);
          }
@@ -52,9 +53,10 @@ class crudcontroller extends Controller
             $image=$request->file('image');
             $extension=$image->getClientOriginalExtension();
             $image_name=time().'.'.$extension;
+            $image_name_path='/storage/pics/'.$image_name;
             $image->move('storage/pics',$image_name);
              cruds::where('id','=',$id)->update([
-             'image'=>$image_name,
+             'image'=>$image_name_path,
              'name'=>$request->name
              ]);}
         return redirect('/');

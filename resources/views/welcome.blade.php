@@ -9,8 +9,8 @@
         <th scope="col">#</th>
         <th scope="col">name</th>
         <th scope="col">image</th>
-        <th scope="col">update</th>
         <th scope="col">delete</th>
+        <th scope="col">update</th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
       <tr>
         <th scope="row">{{ $n++ }}</th>
         <td>{{ $ard->name }}</td>
-        <td><img src="/storage/pics/{{ $ard->image }}" style="width: 150px;height:150px" /></td>
+        <td><img src="{{ $ard->image }}" style="width: 150px;height:150px" /></td>
         <td><form action="{{ route('delete',$ard->id ) }}" method="POST">
           @csrf
           <button class="btn btn-primary" name="delete">delete</button>
