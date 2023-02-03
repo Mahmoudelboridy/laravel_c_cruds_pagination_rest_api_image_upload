@@ -62,4 +62,23 @@ class crudcontroller extends Controller
         return redirect('/');
        }
 
-}
+        public function createn(Request $request){
+            
+                $image=$request->file('image');
+                $extension=$image->getClientOriginalExtension();
+                $image_name=time().'.'.$extension;
+                $image_name_path='/storage/pics/'.$image_name;
+                $image->move('storage/pics',$image_name);
+                $data=cruds::create([
+                    'image'=>$image_name_path,
+                    'name'=>$request->name
+                    ]);  
+           if($data){
+            return response()->json([
+                'message'=>'cruds added',
+                'status'=>'success',
+                'data'=>$data 
+            ]);
+                }}
+
+       }
